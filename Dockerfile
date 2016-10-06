@@ -1,4 +1,4 @@
-FROM mini/base:latest
+FROM alpine:latest
 MAINTAINER Br4zzor <br4zzor@protonmail.com>
 
 
