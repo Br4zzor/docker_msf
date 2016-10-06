@@ -1,2 +1,2 @@
 # docker_msf
-msfconsole nightly builds light version
+Metasploit-framework nightly builds light version
