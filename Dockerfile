@@ -60,7 +60,7 @@ RUN apk del \
 	autoconf \
 	&& rm -rf /var/cache/apk/*
 
-#Database initialization
+#Database initializer
 RUN /etc/init.d/postgresql setup 
 RUN /etc/init.d/postgresql start 
 RUN msfdb init
