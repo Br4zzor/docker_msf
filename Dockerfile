@@ -3,6 +3,7 @@ MAINTAINER Br4zzor <br4zzor@protonmail.com>
 
 
 ENV PATH=$PATH:/usr/share/metasploit-framework 
+ENV NOKOGIRI_USE_SYSTEM_LIBRARIES=1
 
 RUN echo "http://nl.alpinelinux.org/alpine/v3.4/community" >> /etc/apk/repositories && \
     echo "http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
@@ -40,11 +41,27 @@ RUN cd /usr/share && \
     cd /usr/share/metasploit-framework && \
     bundle install
 
-RUN rm -rf /var/cache/apk/*
+RUN apk del \
+	build-base \
+	ruby-dev \
+	libffi-dev\
+        openssl-dev \
+	readline-dev \
+	sqlite-dev \
+	postgresql-dev \
+        libpcap-dev \
+	libxml2-dev \
+	libxslt-dev \
+	yaml-dev \
+	zlib-dev \
+	ncurses-dev \
+	bison \
+	autoconf \
+	&& rm -rf /var/cache/apk/*
 
 #Database initializer
 #RUN /etc/init.d/postgresql setup 
-RUN /etc/init.d/postgresql start 
+#RUN /etc/init.d/postgresql start 
 RUN msfdb init
 
 #Nightly builds
