@@ -9,7 +9,6 @@ RUN chmod +x /usr/local/bin/init.sh && \
     echo "http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
     apk update && \
 	apk add \
-  --update curl \
 	build-base \
 	ruby \
 	ruby-bigdecimal \
