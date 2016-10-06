@@ -40,23 +40,7 @@ RUN cd /usr/share && \
     cd /usr/share/metasploit-framework && \
     bundle install
 
-RUN apk del \
-	build-base \
-	ruby-dev \
-	libffi-dev\
-        openssl-dev \
-	readline-dev \
-	sqlite-dev \
-	postgresql-dev \
-        libpcap-dev \
-	libxml2-dev \
-	libxslt-dev \
-	yaml-dev \
-	zlib-dev \
-	ncurses-dev \
-	bison \
-	autoconf \
-	&& rm -rf /var/cache/apk/*
+RUN rm -rf /var/cache/apk/*
 
 #Database initializer
 #RUN /etc/init.d/postgresql setup 
