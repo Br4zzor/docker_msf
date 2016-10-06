@@ -65,14 +65,14 @@ RUN /etc/init.d/postgresql start
 RUN msfdb init
 
 #Nightly builds
-RUN apk del metasploit-framework
-RUN /usr/bin/curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
-RUN chmod 755 msfinstall
-RUN /msfinstall
+#RUN apk del metasploit-framework
+#RUN /usr/bin/curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
+#RUN chmod 755 msfinstall
+#RUN /msfinstall
 
 #Starts the postgresl service then msfconsole
 #COPY init.sh init.sh
 #RUN chmod 755 init.sh
 
 VOLUME [ "/usr/share/metasploit-framework" ]
-CMD ["/bin/bash"]
+ENTRYPOINT ["msfconsole"]
