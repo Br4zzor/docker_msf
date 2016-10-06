@@ -60,7 +60,7 @@ RUN apk del \
 	&& rm -rf /var/cache/apk/*
 
 #Database initializer
-RUN /etc/init.d/postgresql setup 
+#RUN /etc/init.d/postgresql setup 
 RUN /etc/init.d/postgresql start 
 RUN msfdb init
 
@@ -71,8 +71,8 @@ RUN chmod 755 msfinstall
 RUN /msfinstall
 
 #Starts the postgresl service then msfconsole
-COPY init.sh init.sh
-RUN chmod 755 init.sh
+#COPY init.sh init.sh
+#RUN chmod 755 init.sh
 
 VOLUME [ "/usr/share/metasploit-framework" ]
-CMD ["/bin/bash", "-c", "./init.sh"]
+CMD ["/bin/bash"]
