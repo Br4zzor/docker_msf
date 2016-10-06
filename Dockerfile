@@ -4,8 +4,7 @@ MAINTAINER Br4zzor <br4zzor@protonmail.com>
 
 ENV PATH=$PATH:/usr/share/metasploit-framework 
 
-RUN chmod +x /usr/local/bin/init.sh && \
-    echo "http://nl.alpinelinux.org/alpine/v3.4/community" >> /etc/apk/repositories && \
+RUN echo "http://nl.alpinelinux.org/alpine/v3.4/community" >> /etc/apk/repositories && \
     echo "http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
     apk update && \
 	apk add \
