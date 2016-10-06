@@ -1,4 +1,4 @@
-FROM debian:jessy
+FROM ubuntu:latest
 MAINTAINER Br4zzor <br4zzor@protonmail.com>
 
 RUN apt-get update
