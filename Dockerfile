@@ -2,10 +2,12 @@ FROM alpine:latest
 MAINTAINER Br4zzor <br4zzor@protonmail.com>
 
 
+COPY ./start.sh /usr/local/bin/start.sh
 ENV PATH=$PATH:/usr/share/metasploit-framework 
 ENV NOKOGIRI_USE_SYSTEM_LIBRARIES=1
 
-RUN echo "http://nl.alpinelinux.org/alpine/v3.4/community" >> /etc/apk/repositories && \
+RUN chmod +x /usr/local/bin/start.sh && \
+    echo "http://nl.alpinelinux.org/alpine/v3.4/community" >> /etc/apk/repositories && \
     echo "http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
     apk update && \
 	apk add \
@@ -59,20 +61,5 @@ RUN apk del \
 	autoconf \
 	&& rm -rf /var/cache/apk/*
 
-#Database initializer
-#RUN /etc/init.d/postgresql setup 
-#RUN /etc/init.d/postgresql start 
-RUN msfdb init
-
-#Nightly builds
-#RUN apk del metasploit-framework
-#RUN /usr/bin/curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
-#RUN chmod 755 msfinstall
-#RUN /msfinstall
-
-#Starts the postgresl service then msfconsole
-#COPY init.sh init.sh
-#RUN chmod 755 init.sh
-
 VOLUME [ "/usr/share/metasploit-framework" ]
-ENTRYPOINT ["msfconsole"]
+CMD [ "/usr/local/bin/start.sh" ] 
