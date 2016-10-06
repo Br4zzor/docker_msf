@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:trusty
 MAINTAINER Br4zzor <br4zzor@protonmail.com>
 
 RUN apt-get update
