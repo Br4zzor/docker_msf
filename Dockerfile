@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM phusion/baseimage:latest
 MAINTAINER Br4zzor <br4zzor@protonmail.com>
 
 RUN apt-get update
